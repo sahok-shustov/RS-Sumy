@@ -1,0 +1,11 @@
+a {
+	text-decoration: none;
+}
+.card {
+	border-radius: 10px;
+}
+.main {
+	background: rgba(194, 255, 226, 0.6);
+	text-align: center;
+	font-weight: bold; 
+}

@@ -1,0 +1,34 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced">
+        <button class="button button-icon icon ion-person"></button>
+        <div class="h1 title">Авторизация</div>
+        <button class="button button-icon icon ion-close-circled" ng-click="closeLogin()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <form name="enterForm" novalidate ng-submit="doLogin()">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="enter.email" name="email" placeholder="Введите Email" ng-pattern="/[a-z0-9!.,#$%&'*+-/=?^_`{|}~]+@[a-z]+\.[a-z.]{2,}$/" required>
+                    <span style="color:red" ng-show="enterForm.email.$dirty && enterForm.email.$invalid">
+                    <span ng-show="enterForm.email.$touched && enterForm.email.$error.pattern">Введите корректный почтовый ящик!</span>
+                    </span>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Password</span>
+                    <input type="{{inputLogin}}" ng-model="enter.password" name="password" placeholder="Введите пароль" style="width: 90%;" ng-minlength="6" required>
+                    <span class="error" ng-show="enterForm.password.$error.minlength">
+        Пароль не менее 6 символов.</span>
+                </label>
+                <a ng-click="hideShowPasswordLogin(); eyeOpenL=true" ng-show="!eyeOpenL" class="button button-clear icon ion-eye-disabled" style="position:absolute; top: 60%; left: 85%; z-index: 2;"></a>
+                <a ng-click="hideShowPasswordLogin(); eyeOpenL=false" ng-show="eyeOpenL" class="button button-clear icon ion-eye button-balanced" style="position:absolute; top: 60%; left: 85%; z-index: 2;"></a>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-balanced" type="submit" ng-disabled="enterForm.email.$invalid || enterForm.email.$pristine || enterForm.email.$error.pattern || enterForm.password.$pristine || enterForm.password.$error.minlength">Войти</button>
+            </div>
+        </form>
+        <p class="text-center padding-top">
+                    <a class="button button-clear button-positive" ng-click="openForgot()">Забыли пароль</a>
+                    <a class="button button-clear button-positive" ng-click="openRegister()">Регистрация</a>
+    </ion-content>
+</ion-modal-view>

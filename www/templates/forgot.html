@@ -1,0 +1,28 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-assertive">
+        <button class="button button-icon icon ion-settings"></button>
+        <div class="h1 title">Сброс пароля</div>
+        <button class="button button-icon icon ion-close-circled" ng-click="closeForgot()"></button>
+    </ion-header-bar>
+    <ion-content>
+        <div class="card">
+            <div class="item item-text-wrap">
+                Введите емеил при регистрации.<br> 
+                Мы вышлим на него новый временный пароль.
+            </div>
+        </div>
+        <form name="forgotForm" novalidate ng-submit="doForgot()">
+            <div class="list">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="reset.email" name="reset" placeholder="Введите Email" ng-pattern="/[a-z0-9!.,#$%&'*+-/=?^_`{|}~]+@[a-z]+\.[a-z.]{2,}$/" required>
+                    <span style="color:red" ng-show="forgotForm.reset.$dirty && forgotForm.reset.$invalid"></span>
+                    <span style="color:red" ng-show="forgotForm.reset.$error.pattern">Вводите корректный почтовый ящик!</span>
+                </label>
+            </div>
+            <div class="padding" style="width: 100%; text-align: center">
+                <button class="button button-assertive icon-left" type="submit" ng-disabled="forgotForm.reset.$invalid || forgotForm.reset.$pristine || forgotForm.reset.$error.pattern">Выслать пароль</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>
